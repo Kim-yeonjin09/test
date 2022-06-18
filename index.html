@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>포켓몬도감만들기</h1>
+    <h1>나만의 포켓몬도감만들기</h1>
     <p>피카츄, 파이리, 꼬부기를 구별해서 이에 대한 설명을 보여주는 웹 앱</p>
     <button type="button" onclick="init()">Start</button>
     <button type="button" onclick="predict()">Predict</button>
@@ -74,38 +74,36 @@
         async function predict() {
             // predict can take in an image, video or canvas html element
             var image = document.getElementById("my-image")
-            const prediction = await model.predict(image, false); 
-            // false는 이미지를 그대로 삽입함(좌우반전X)
-            if(prediction[0].probability > 0.7) {
+            const prediction = await model.predict(image, false);
+            if (prediction[0].probability > 0.7) {
                 labelContainer.childNodes[0].innerHTML = "위 포켓몬은 피카츄입니다."
-                labelContainer.childNodes[1].innerHTML = "피카츄(ピカチュウ 피카추[*][1])는 포켓몬스터에 등장하는 가상의 생명체이다. 애니메이션과 비디오게임에서는 오오타니 이쿠에가 그 목소리를 맡고 있다. 귀여운 전기 포켓몬을 그려달라는 스기모리 켄의 주문을 받아 니시다 아쓰코가 디자인하였다.[2] 포켓몬 애니메이션에서 주인공 지우의 첫 포켓몬이자 파트너이다. 포켓몬스터의 마스코트이며 일본 대중문화의 아이콘이기도 하다. 1998년부터 지금까지 포켓몬스터의 만화 주인공 지우와 함께 모험을 하고 있다."
+                labelContainer.childNodes[1].innerHTML = "피카츄는 포켓몬스터에 등장하는 가상의 생명체이다. 애니메이션과 비디오게임에서는 오오타니 이쿠에가 그 목소리를 맡고 있다. 귀여운 전기 포켓몬을 그려달라는 스기모리 켄의 주문을 받아 니시다 아쓰코가 디자인하였다. 포켓몬 애니메이션에서 주인공 지우의 첫 포켓몬이자 파트너이다."
             }
-            else if(prediction[1].probability > 0.7) {
+            else if (prediction[1].probability > 0.7) {
                 labelContainer.childNodes[0].innerHTML = "위 포켓몬은 파이리입니다."
-                labelContainer.childNodes[1].innerHTML = "《파이리》(ヒトカゲ 히토카게[*], 영어: Charmander 찰맨더[*])는 포켓몬스터 시리즈에 등장하는 가공의 캐릭터(몬스터)이다. 한국명인 '파이리'는 영어로 불을 뜻하는 'Fire'와 꼬리의 합성어이다."
+                labelContainer.childNodes[1].innerHTML = "《파이리》는 포켓몬스터 시리즈에 등장하는 가공의 캐릭터이다. 한국명인 '파이리'는 영어로 불을 뜻하는 'Fire'와 꼬리의 합성어이다."
             }
-            else if(prediction[2].probability > 0.7) {
+            else if (prediction[2].probability > 0.7) {
                 labelContainer.childNodes[0].innerHTML = "위 포켓몬은 꼬부기입니다."
-                labelContainer.childNodes[1].innerHTML = "《꼬부기》(ゼニガメ 제니가메[*], 영어: Squirtle)는 포켓몬스터 시리즈에 등장하는 가공의 캐릭터(몬스터)이다. 분류는 꼬마거북 포켓몬이다."
+                labelContainer.childNodes[1].innerHTML = "《꼬부기》는 포켓몬스터 시리즈에 등장하는 가공의 캐릭터이다. 분류는 꼬마거북 포켓몬이다."
             }
-            else{
+            else {
                 labelContainer.childNodes[0].innerHTML = "모르겠습니다."
             }
-                // for (let i = 0; i < maxPredictions; i++) {
+            // for (let i = 0; i < maxPredictions; i++) {
             //     const classPrediction =
             //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             //     labelContainer.childNodes[i].innerHTML = classPrediction;
             // }
         }
     </script>
-    <script>
-        function readURL(input) {
+    <script>function readURL(input) {
             if (input.files && input.files[0]) {
 
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('.image-upload-wrap').hide();s
+                    $('.image-upload-wrap').hide();
 
                     $('.file-upload-image').attr('src', e.target.result);
                     $('.file-upload-content').show();
@@ -131,7 +129,6 @@
         $('.image-upload-wrap').bind('dragleave', function () {
             $('.image-upload-wrap').removeClass('image-dropping');
         });
-
     </script>
 </body>
 
